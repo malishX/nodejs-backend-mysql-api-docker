@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  my-tech-nodejs:
+    container_name: my-tech-nodejs
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+      target: dev
+    volumes:
+      - .:/app
+    command: sh -c "npm i && npm run dev"
+    ports:
+      - "7300:3000"
+    environment:
+      NODE_ENV: development
+      DEBUG: nodejs-docker-express:*
